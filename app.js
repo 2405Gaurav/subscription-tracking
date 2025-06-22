@@ -4,6 +4,8 @@ import authRouter from './routes/auth.route.js';
 import userRouter from './routes/user.router.js';
 import subRouter from './routes/subscription.route.js';
 import connectToDatabase from './database/mongodb.js';
+import errorMiddleware from './middlewares/error.middleware.js';
+import cookieParser from 'cookie-parser';
 
 dotenv.config(); // Load .env variables at the top
 
@@ -12,11 +14,16 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({extended:false}))
 
 // Routes
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/subscriptions', subRouter);
+
+//custom global error handler
+app.use(errorMiddleware)
 
 // Root route
 app.get('/', (req, res) => {
