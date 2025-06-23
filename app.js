@@ -6,6 +6,7 @@ import subRouter from './routes/subscription.route.js';
 import connectToDatabase from './database/mongodb.js';
 import errorMiddleware from './middlewares/error.middleware.js';
 import cookieParser from 'cookie-parser';
+import workflowRouter from './routes/workflow.route.js';
 // import arcjetMiddleware from './middlewares/arcjet.middleware.js';
 
 dotenv.config(); // Load .env variables at the top
@@ -23,6 +24,7 @@ app.use(express.urlencoded({extended:false}))
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/subscriptions', subRouter);
+app.use('/api/v1/workflows', workflowRouter);
 
 //custom global error handler
 app.use(errorMiddleware)
