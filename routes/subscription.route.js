@@ -7,7 +7,6 @@ const subRouter = Router();
 
 subRouter.get('/',(req,res)=>res.send({title:'GET all subcription'}))
 
-subRouter.get('/:id',(req,res)=>res.send({title:'GET subcription detail'}))
 
 subRouter.post('/',authorize,createSubcription);
 
