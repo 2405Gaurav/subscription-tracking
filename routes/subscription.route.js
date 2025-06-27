@@ -14,7 +14,6 @@ subRouter.put('/:id',(req,res)=>res.send({title:'UPDATE subcription'}))
 
 subRouter.get('/user/:id',authorize,getUserSubcription)
 
-subRouter.put('/:id/cancel',(req,res)=>res.send({title:'CANCEL subcription'}))
 
 subRouter.get('/upcoming renewals',(req,res)=>res.send({title:'GET upcoming renewals'}))
 export default subRouter;
